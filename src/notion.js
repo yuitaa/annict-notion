@@ -103,7 +103,7 @@ export async function createNewAnimePage(data) {
   const images = imagesData?.data
     ?.map(img => img.webp?.image_url)
     ?.filter(url => url !== undefined);
-  if (data.images?.facebook?.og_image_url) {
+  if (data.images?.facebook?.og_image_url && data.images.facebook.og_image_url.startsWith("https://")) {
     images.unshift(data.images.facebook.og_image_url);
   }
 
