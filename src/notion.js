@@ -49,7 +49,7 @@ export class NotionAnimeProperties {
       };
     }
     if (this.season_name_text) {
-      result["リリース時期"] = {
+      result["シーズン"] = {
         "select": {
           "name": this.season_name_text
         }
