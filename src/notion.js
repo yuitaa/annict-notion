@@ -1,3 +1,6 @@
+import axios from "axios";
+import { statusText, NOTION_TOKEN, NOTION_DB_ID } from "./config.js"
+
 export class NotionAnimeProperties {
   constructor(
     title,
@@ -41,7 +44,7 @@ export class NotionAnimeProperties {
     if (this.status) {
       result["ステータス"] = {
         "select": {
-          "name": this.status.kind
+          "name": this.status
         }
       };
     }
@@ -81,4 +84,54 @@ export class NotionAnimeProperties {
 
     return result;
   }
+}
+
+export async function createNewAnimePage(data) {
+  const url = "https://api.notion.com/v1/pages/";
+
+  async function getPictures(id) {
+    const endpoint = `https://api.jikan.moe/v4/anime/${id}/pictures`;
+    try {
+      const response = await axios.get(endpoint);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const imagesData = await getPictures(data.mal_anime_id)
+  const images = imagesData?.data
+    ?.map(img => img.webp?.image_url)
+    ?.filter(url => url !== undefined);
+  if (data.images?.facebook?.og_image_url) {
+    images.push(data.images.facebook.og_image_url);
+  }
+
+  const properties = new NotionAnimeProperties(
+    data?.title,
+    data?.id,
+    statusText[data?.status?.kind],
+    data?.season_name_text,
+    data?.media_text,
+    data?.official_site_url,
+    data?.twitter_username,
+    images
+  );
+
+  const notionResponse = await axios.post(
+    url,
+    {
+      parent: { database_id: NOTION_DB_ID },
+      properties: properties.toJSON()
+    },
+    {
+      headers: {
+        "Authorization": `Bearer ${NOTION_TOKEN}`,
+        "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json"
+      }
+    }
+  );
+
+  return notionResponse.data
 }
