@@ -41,7 +41,7 @@ export class NotionAnimeProperties {
     if (this.status) {
       result["ステータス"] = {
         "select": {
-          "name": this.status
+          "name": this.status.kind
         }
       };
     }
