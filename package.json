@@ -2,5 +2,6 @@
   "name": "annict-notion",
   "version": "1.0.0",
   "scripts": {},
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }
