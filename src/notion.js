@@ -73,6 +73,7 @@ export class NotionAnimeProperties {
       result["画像"] = {
         "files": this.images.map(url => ({
           "type": "external",
+          "name": "visual",
           "external": { "url": url }
         }))
       };
