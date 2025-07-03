@@ -104,7 +104,7 @@ export async function createNewAnimePage(data) {
     ?.map(img => img.webp?.image_url)
     ?.filter(url => url !== undefined);
   if (data.images?.facebook?.og_image_url) {
-    images.push(data.images.facebook.og_image_url);
+    images.unshift(data.images.facebook.og_image_url);
   }
 
   const properties = new NotionAnimeProperties(
