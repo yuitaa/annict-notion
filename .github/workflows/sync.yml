@@ -24,7 +24,7 @@ jobs:
       - name: Run sync script
         run: node src/main.js
         env:
-          ANNict_TOKEN: ${{ secrets.ANNICT_TOKEN }}
+          ANNICT_TOKEN: ${{ secrets.ANNICT_TOKEN }}
           NOTION_KEY: ${{ secrets.NOTION_KEY }}
           NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
 
