@@ -25,7 +25,7 @@ jobs:
         run: node src/main.js
         env:
           ANNICT_TOKEN: ${{ secrets.ANNICT_TOKEN }}
-          NOTION_KEY: ${{ secrets.NOTION_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
 
       - name: Commit and push changes
