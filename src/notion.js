@@ -135,3 +135,32 @@ export async function createNewAnimePage(data) {
 
   return notionResponse.data
 }
+
+export function editAnimePage(id, data) {
+  const url = `https://api.notion.com/v1/pages/${id}`;
+  const properties = new NotionAnimeProperties(
+    data?.title,
+    data?.id,
+    statusText[data?.status?.kind],
+    data?.season_name_text,
+    data?.media_text,
+    data?.official_site_url,
+    data?.twitter_username,
+    data?.images
+  );
+
+  return axios.patch(
+    url,
+    {
+      properties: properties.toJSON()
+    },
+    {
+      headers: {
+        "Authorization": `Bearer ${NOTION_TOKEN}`,
+        "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json"
+      }
+    }
+  );
+
+}
