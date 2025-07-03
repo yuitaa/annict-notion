@@ -3,7 +3,7 @@ export class NotionAnimeProperties {
     title,
     id,
     status,
-    released_on,
+    season_name_text,
     media_text,
     official_site_url,
     twitter_username,
@@ -12,7 +12,7 @@ export class NotionAnimeProperties {
     this.title = title;
     this.id = id;
     this.status = status;
-    this.released_on = released_on;
+    this.season_name_text = season_name_text;
     this.media_text = media_text;
     this.official_site_url = official_site_url;
     this.twitter_username = twitter_username;
@@ -45,10 +45,10 @@ export class NotionAnimeProperties {
         }
       };
     }
-    if (this.released_on) {
+    if (this.season_name_text) {
       result["リリース時期"] = {
         "select": {
-          "name": this.released_on
+          "name": this.season_name_text
         }
       };
     }
