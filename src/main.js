@@ -1,5 +1,5 @@
-import { getMyWorks } from "./annict.js";
-import { createNewAnimePage, editAnimePage } from "./notion.js";
+import { getMyWorks } from './annict.js';
+import { createNewAnimePage, editAnimePage } from './notion.js';
 import { setTimeout } from 'timers/promises';
 import { writeFile, readFile, mkdir } from 'fs/promises';
 let animeData = {};
@@ -14,8 +14,9 @@ async function syncAnnictToNotion(status) {
   const data = {};
   const works = await getMyWorks(status);
   for (const work of works) {
-
-    if (data[work.id]) { continue };
+    if (data[work.id]) {
+      continue;
+    }
     if (!animeData[work.id]) {
       const response = await createNewAnimePage(work);
       data[work.id] = { notion_id: response.id, status };
@@ -26,17 +27,20 @@ async function syncAnnictToNotion(status) {
       data[work.id] = { notion_id, status };
       editAnimePage(notion_id, { status: { kind: status } });
       console.log(`ステータスの更新: ${work.title}`);
-    };
+    }
+  }
 
-  };
-
-  return data
+  return data;
 }
 
 async function main() {
-  Object.assign(animeData, await syncAnnictToNotion("watching"));
-  Object.assign(animeData, await syncAnnictToNotion("watched"));
-  await writeFile('./data/data.json', JSON.stringify(animeData, null, 2), 'utf-8');
+  Object.assign(animeData, await syncAnnictToNotion('watching'));
+  Object.assign(animeData, await syncAnnictToNotion('watched'));
+  await writeFile(
+    './data/data.json',
+    JSON.stringify(animeData, null, 2),
+    'utf-8',
+  );
 }
 
 await mkdir('./data', { recursive: true });
