@@ -99,10 +99,13 @@ export async function createNewAnimePage(data) {
     }
   }
 
-  const imagesData = await getPictures(data.mal_anime_id);
-  const images = imagesData?.data
-    ?.map((img) => img.webp?.image_url)
-    ?.filter((url) => url !== undefined);
+  const imagesData = data.mal_anime_id
+    ? await getPictures(data.mal_anime_id)
+    : [];
+  const images =
+    imagesData?.data
+      ?.map((img) => img.webp?.image_url)
+      ?.filter((url) => url !== undefined) || [];
   if (
     data.images?.facebook?.og_image_url &&
     data.images.facebook.og_image_url.startsWith('https://')
