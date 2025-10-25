@@ -2,13 +2,5 @@
   "tabWidth": 2,
   "semi": true,
   "singleQuote": true,
-  "bracketSameLine": true,
-  "overrides": [
-    {
-      "files": "*.astro",
-      "options": {
-        "parser": "astro"
-      }
-    }
-  ]
+  "bracketSameLine": true
 }
