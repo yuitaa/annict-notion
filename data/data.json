@@ -509,7 +509,7 @@
   },
   "7275": {
     "notion_id": "3669686b-a210-814d-af70-e98bf83a5042",
-    "status": "watching"
+    "status": "watched"
   },
   "7379": {
     "notion_id": "2259686b-a210-816f-ae0f-e037b70f77d4",
@@ -606,6 +606,10 @@
   "8949": {
     "notion_id": "2479686b-a210-8186-b5b2-c478a54ee212",
     "status": "watched"
+  },
+  "9029": {
+    "notion_id": "3689686b-a210-81f7-a12e-d5731d678e5d",
+    "status": "watching"
   },
   "9042": {
     "notion_id": "2259686b-a210-8107-8edc-e8aaf18d93bf",
