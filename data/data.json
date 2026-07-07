@@ -1293,7 +1293,7 @@
   },
   "16160": {
     "notion_id": "3499686b-a210-810c-bdbd-dc20495af824",
-    "status": "watching"
+    "status": "watched"
   },
   "16253": {
     "notion_id": "27a9686b-a210-81a0-bd71-db3265e5e700",
@@ -1381,7 +1381,7 @@
   },
   "16596": {
     "notion_id": "3469686b-a210-81b1-8955-f2b953a166bc",
-    "status": "watching"
+    "status": "watched"
   },
   "16598": {
     "notion_id": "3409686b-a210-8168-88af-f9479e019a6b",
@@ -1402,6 +1402,10 @@
   "16910": {
     "notion_id": "3959686b-a210-81a8-9fa2-ec7d56871d8b",
     "status": "watching"
+  },
+  "17040": {
+    "notion_id": "3969686b-a210-81bf-aac3-c040628e6334",
+    "status": "watched"
   },
   "17088": {
     "notion_id": "3939686b-a210-8154-8a5c-eb74c4cae660",
